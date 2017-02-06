@@ -1,0 +1,40 @@
+.gradle 和 .idea
+    这两个目录下放置的是Android Studio 自动生成的一些文件，无需关心，也不要手动编辑
+
+app
+    项目中的代码，资源等内容几乎都是放置在这个目录下，我们后面的开发工作也基本上都是在这个目录下面进行的
+    1.build
+    2.libs
+        存放第三方的 jar 包
+    3.android Test
+        此处是用来编写 AndroidTest测试用例的
+
+    4.java
+        存放java代码的
+    5.res
+        存放项目中所有的资源
+
+    6.AndroidManifest.xml
+        整个Android项目的配置文件，程序中定义的所有四大组件都要在这里注册，添加权限
+
+    7.test
+        用来编写 UnitTest测试用的
+
+build
+    这个目录也不需要关心，主要包含了一些在编译时自动生成的文件
+
+gradle
+    这个目录下包含了 gradle wrapper 的配置文件，使用 gradle wrapper 的方式不需要提前将 gradle 下载好，而是
+    会自动根据本地缓存情况决定是否需要联网下载gradle。默认没有此方式，可以自己配置
+
+.gitignore
+    这个文件是用来将指定的目录或文件排除在版本控制之外的
+
+build.gradle
+    这是项目全局的gradle构建脚本，通常这个文件中的内容是不需要修改的。稍后我们将会仔细分析gradle构建脚本中的具体内容
+
+gradle.properties
+    这个文件是全局的gradle的配置文件，在这里配置的属性将会影响到项目中所有的gradle编译脚本
+
+gradlew 和 gradlew.bat
+    这两个文件是用来在命令行界面中执行 gradle 命令的
