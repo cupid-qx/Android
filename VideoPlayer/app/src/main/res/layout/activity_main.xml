@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -8,17 +7,22 @@
         android:layout_width="match_parent"
         android:layout_height="240dp">
 
+        <!--视频播放界面-->
         <VideoView
             android:id="@+id/vv_main"
             android:layout_width="match_parent"
             android:layout_height="240dp" />
 
         <LinearLayout
+            android:id="@+id/layout_controllerBar"
             android:orientation="vertical"
             android:layout_alignParentBottom="true"
             android:layout_width="match_parent"
             android:layout_height="40dp">
+
+            <!--上方的进度条-->
             <SeekBar
+                android:id="@+id/seekBar_player"
                 android:thumb="@null"
                 android:progressDrawable="@drawable/seekbar_style2"
                 android:max="100"
@@ -29,12 +33,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="5dp" />
 
+            <!--下方的功能区-->
             <RelativeLayout
-                android:id="@+id/layout_controllerBar"
                 android:gravity="center_vertical"
                 android:background="#102030"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
+
+                <!--左边线性布局，有按钮，进度-->
                 <LinearLayout
                     android:id="@+id/layout_left"
                     android:orientation="horizontal"
@@ -42,12 +48,15 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent">
 
+                    <!--视频开始按钮-->
                     <ImageView
+                        android:id="@+id/iv_pause"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:src="@drawable/video_start_style"
                         />
 
+                    <!--当前播放进度-->
                     <TextView
                         android:id="@+id/tv_now"
                         android:layout_width="wrap_content"
@@ -58,6 +67,7 @@
                         android:layout_marginLeft="20dp"
                         />
 
+                    <!--分割线-->
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -66,6 +76,8 @@
                         android:textSize="14sp"
                         android:layout_marginLeft="3dp"
                         />
+
+                    <!--总时间-->
                     <TextView
                         android:id="@+id/tv_totalTime"
                         android:layout_width="wrap_content"
@@ -78,6 +90,7 @@
 
                 </LinearLayout>
 
+                <!--右边的线性布局，有音量，横竖屏切换-->
                 <LinearLayout
                     android:layout_width="10dp"
                     android:layout_height="match_parent"
@@ -91,9 +104,9 @@
                     <ImageView
                         android:layout_width="30dp"
                         android:layout_height="wrap_content"
-                        android:src="@mipmap/video_voice_bg"
-                        android:layout_weight="" />
+                        android:src="@mipmap/video_voice_bg" />
 
+                    <!--音量的进度-->
                     <SeekBar
                         android:layout_width="100dp"
                         android:layout_height="5dp"
@@ -103,7 +116,7 @@
 
                         android:progress="20"
                         android:max="100"
-                        android:id="@+id/seekBar" />
+                        android:id="@+id/seekBar_volume" />
 
                     <View
                         android:layout_width="1dp"
@@ -113,6 +126,7 @@
                         android:background="#fff"
                         android:layout_marginLeft="40dp"/>
 
+                    <!--横竖屏切换-->
                     <ImageView
                         android:src="@mipmap/big_screen_change"
                         android:layout_marginRight="16dp"
@@ -124,6 +138,7 @@
                 </LinearLayout>
 
             </RelativeLayout>
+
         </LinearLayout>
 
     </RelativeLayout>
