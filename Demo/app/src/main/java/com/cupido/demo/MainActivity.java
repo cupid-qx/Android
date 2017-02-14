@@ -31,6 +31,18 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onActivityResult(int requestCode,int resultCode, Intent data) {
+        switch (requestCode)
+        {
+            case 1:
+                if(resultCode == 2){
+                    String returnData = data.getStringExtra("extra_data");
+                    Log.d("MainActivity",returnData);
+                }
+        }
+    }
+
+    @Override
     protected void onStart() {
         super.onStart();
         Log.d("Demo","MainActivity onStart...");

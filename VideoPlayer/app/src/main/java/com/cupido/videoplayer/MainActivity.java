@@ -1,14 +1,17 @@
 package com.cupido.videoplayer;
 
+import android.content.res.Configuration;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.MediaController;
+import android.widget.RelativeLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,8 +25,9 @@ public class MainActivity extends AppCompatActivity {
     private ImageView imageView_pause, imageView_fullScreen;
     private TextView textView_timeNow, textView_timeTotal;
     private SeekBar seekBar_volume, seekBar_player;
-
+    private int screenWidth, screenHeight;
     private static final int updateUI = 1;
+    private RelativeLayout rLayout_container;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -161,6 +165,7 @@ public class MainActivity extends AppCompatActivity {
         videoView = (VideoView) findViewById(R.id.vv_main);
 
         controllerLayout = (LinearLayout) findViewById(R.id.layout_controllerBar);
+        rLayout_container = (RelativeLayout) findViewById(R.id.rLayout_container);
 
         imageView_pause = (ImageView) findViewById(R.id.iv_pause);
         imageView_fullScreen = (ImageView) findViewById(R.id.iv_screen);
@@ -170,8 +175,40 @@ public class MainActivity extends AppCompatActivity {
 
         seekBar_player = (SeekBar) findViewById(R.id.seekBar_player);
         seekBar_volume = (SeekBar) findViewById(R.id.seekBar_volume);
+
+        screenWidth = getResources().getDisplayMetrics().widthPixels;
+        screenHeight = getResources().getDisplayMetrics().heightPixels;
     }
 
+    private void setVideoViewSize(int width, int height) {
+        ViewGroup.LayoutParams layoutParams = videoView.getLayoutParams();
+        layoutParams.height = height;
+        layoutParams.width = width;
+        videoView.setLayoutParams(layoutParams);
+
+        ViewGroup.LayoutParams layoutParams1 = rLayout_container.getLayoutParams();
+        layoutParams1.width = width;
+        layoutParams1.height = height;
+        rLayout_container.setLayoutParams(layoutParams1);
+    }
+
+
+    /**
+     * 监听屏幕方向的改变
+     *
+     * @param newConfig
+     */
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        // 屏幕方向为横屏的时候
+        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            setVideoViewSize(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+        } else {
+            // 为竖屏的时候
+            setVideoViewSize(ViewGroup.LayoutParams.MATCH_PARENT, PixelUtils.dp2px(this, 240));
+        }
+    }
 
     @Override
     protected void onPause() {

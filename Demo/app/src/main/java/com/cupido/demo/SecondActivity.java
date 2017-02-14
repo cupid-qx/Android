@@ -25,7 +25,7 @@ public class SecondActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent() ;
                 intent.putExtra("extra_data","这是返回的数据") ;
-                setResult(1,intent);
+                setResult(2,intent);
                 finish();
             }
         });
