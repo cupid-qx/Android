@@ -45,7 +45,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent("com.cupid.broadcastdemo.MY_BROADCAST");
-                sendBroadcast(intent);
+                // sendBroadcast(intent);
+
+                /**
+                 * 发送有序广播，第二个参数为权限相关的字符串
+                 * 可以在 AndroidManifest.xml文件中定义优先级来制定接受顺序
+                 */
+                sendOrderedBroadcast(intent,null);
+
             }
         });
     }

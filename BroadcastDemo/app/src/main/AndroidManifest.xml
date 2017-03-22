@@ -42,7 +42,7 @@
             android:enabled="true"
             android:exported="true">
             <intent-filter>
-                <action android:name="com.cupid.broadcastdemo.MY_BROADCAST"/>
+                <action android:name="com.cupid.broadcastdemo2.LOCAL_BROADCAST"/>
             </intent-filter>
 
 

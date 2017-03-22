@@ -15,5 +15,8 @@ public class BroadcastReceiver2 extends BroadcastReceiver {
         // an Intent broadcast.
         //throw new UnsupportedOperationException("Not yet implemented");
         Toast.makeText(context,"-->received in BroadcastReceiver2",Toast.LENGTH_LONG).show();
+
+        // 中断广播的传送
+        abortBroadcast();
     }
 }
